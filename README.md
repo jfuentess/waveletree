@@ -20,15 +20,12 @@ We provide two bash scripts to the compilation of our algorithms. The
 first script, *build.sh*, is intended to run experiments to measure
 the running time.
 
-	```shell
 	bash build.sh
-	```
+
 The second script in intended to run experiments to measure the
 memory consumption.
 
-	```shell
 	bash build_memory.sh
-	```
 	
 By default, our algorithms use Cilk Plus and assume integer alphabets
 using 4 bytes to encode each symbol of the input. Below, we provide a
@@ -48,10 +45,9 @@ list of additional options to compile our algorithms:
   
 ## Usage ##
 
-	```shell
 	./pwt <input sequence> <alphabet size> [validation file]
 	./dd <input sequence> <alphabet size> [validation file]
-	```
+
 A limitation of our current implementation is that the alphabet size
 is not computed by the implementation. Instead, the alphabet size has
 to be given as an argument. Note that the alphabet size has to be a

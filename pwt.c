@@ -66,16 +66,15 @@ bitRankW32Int** wt_create(symbol* T, unsigned long n, unsigned int alphabet) {
 #else
   bitRankW32Int** wtree = (bitRankW32Int**)malloc(levels * sizeof(bitRankW32Int*));
 #endif
-  unsigned int ii = 0;
-  cilk_for (ii = 0; ii < levels; ii++) {
+  unsigned int i = 0;
+  cilk_for (i = 0; i < levels; i++) {
     // Number of nodes in the i-th level
-    unsigned int i = 0;
     unsigned int nnum = 1 << i;
 
     // Allocating memory to save the number of symbols on each node of the wavelet tree
     unsigned int* counters = (unsigned int*)calloc(nnum, sizeof(unsigned int));
 #ifdef NO_RANK_SELECT
-    wtree[ii] = bit_array_create(n);
+    wtree[i] = bit_array_create(n);
 //    BIT_ARRAY* wtreei = bit_array_create(n);
 #else
     BIT_ARRAY* bit_array = bit_array_create(n);
@@ -110,7 +109,7 @@ bitRankW32Int** wt_create(symbol* T, unsigned long n, unsigned int alphabet) {
       
       if (k)
 #ifdef NO_RANK_SELECT
-        bit_array_set_bit(wtree[ii], counters[schunk]);
+        bit_array_set_bit(wtree[i], counters[schunk]);
 #else
         bit_array_set_bit(bit_array, counters[schunk]);
 #endif
